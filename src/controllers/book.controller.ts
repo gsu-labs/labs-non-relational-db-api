@@ -70,6 +70,27 @@ class BookController {
             next(error);
         }
     };
+
+    public getBooksBySearch = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const str: string = req.params.str;
+            const findBooksData: Book[] = await this.bookService.search(str);
+
+            res.status(200).json({ data: findBooksData, message: 'findAll' });
+        } catch (error) {
+            next(error);
+        }
+    };
+
+    public getBooksSortByCost = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const findAllBooksData: Book[] = await this.bookService.findAllBooksSortByCost();
+
+            res.status(200).json({ data: findAllBooksData, message: 'findAll' });
+        } catch (error) {
+            next(error);
+        }
+    };
 }
 
 export default BookController;

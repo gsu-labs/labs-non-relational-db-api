@@ -18,6 +18,8 @@ class BookRoute implements Routes {
         this.router.put(`${this.path}/:id`, this.bookController.updateBook);
         this.router.delete(`${this.path}/:id`, this.bookController.deleteBook);
         this.router.get(`${this.path}/cost/:max`, this.bookController.getBooksByCost);
+        this.router.get(`${this.path}/search/:str`, this.bookController.getBooksBySearch);
+        this.router.get(`${this.path}/sort/cost`, this.bookController.getBooksSortByCost);
     }
 }
 

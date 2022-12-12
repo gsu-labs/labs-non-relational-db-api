@@ -51,6 +51,20 @@ class BookService {
 
         return findBooks;
     }
+
+    public async search(str: string): Promise<Book[]> {
+        if (isEmpty(str)) throw new HttpException(400, 'String is empty');
+
+        const findBooks: Book[] = await this.books.find({ name: { '$regex': str, '$options': 'i' } });
+        if (!findBooks) throw new HttpException(409, 'Books doesn\'t exist');
+
+        return findBooks;
+    }
+
+    public async findAllBooksSortByCost(): Promise<Book[]> {
+        const books: Book[] = await this.books.find().sort({ cost: 1 });
+        return books;
+    }
 }
 
 export default BookService;
