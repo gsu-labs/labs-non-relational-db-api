@@ -59,6 +59,17 @@ class BookController {
             next(error);
         }
     };
+
+    public getBooksByCost = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const maxCost: number = +req.params.max;
+            const findBooksData: Book[] = await this.bookService.findBooksByCost(maxCost);
+
+            res.status(200).json({ data: findBooksData, message: 'findAll' });
+        } catch (error) {
+            next(error);
+        }
+    };
 }
 
 export default BookController;

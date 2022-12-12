@@ -42,6 +42,15 @@ class BookService {
 
         return deleteBookById;
     }
+
+    public async findBooksByCost(maxCost: number): Promise<Book[]> {
+        if (isEmpty(maxCost)) throw new HttpException(400, 'Book cost is empty');
+
+        const findBooks: Book[] = await this.books.find({ cost: { $lt: maxCost } });
+        if (!findBooks) throw new HttpException(409, 'Books doesn\'t exist');
+
+        return findBooks;
+    }
 }
 
 export default BookService;

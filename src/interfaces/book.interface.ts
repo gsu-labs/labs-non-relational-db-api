@@ -2,7 +2,7 @@ export interface Book {
     _id?: string;
     type: string;
     index: number;
-    coast: number;
+    cost: number;
     name: string;
     year: number;
     author: string;

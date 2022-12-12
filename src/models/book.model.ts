@@ -11,7 +11,7 @@ const bookSchema: Schema = new Schema({
         required: true,
         unique: true
     },
-    coast: {
+    cost: {
         type: Number,
         required: true
     },
