@@ -1,9 +1,9 @@
 export interface Check {
     _id?: string;
-    number: number;
-    date?: Date;
-    books: [{
+    checkNumber: number;
+    saleDate?: Date;
+    booksList: [{
         bookId: string;
-        number: number;
+        amount: number;
     }];
 }
